@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <h2>Edit Employee</h2>
+  <form method="post">
+    {% csrf_token %}
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" value="{{ employee.first_name }}" required>
+    <br>
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" value="{{ employee.last_name }}" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="{{ employee.email }}" required>
+    <br>
+    <label for="position">Position:</label>
+    <input type="text" id="position" name="position" value="{{ employee.position }}" required>
+    <br>
+    <label for="salary">Salary:</label>
+    <input type="number" id="salary" name="salary" step="0.01" value="{{ employee.salary }}" required>
+    <br>
+    <label for="date_joined">Date Joined:</label>
+    <input type="date" id="date_joined" name="date_joined" value="{{ employee.date_joined }}" required>
+    <br>
+    <button type="submit">Save Changes</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<h2>Employee List</h2>
+<table class="employee-table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Date Joined</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.position }}</td>
+            <td>{{ employee.salary }}</td>
+            <td>{{ employee.date_joined }}</td>
+            <td>
+                <a class="btn-edit" href="{% url 'employee_update' employee.id %}">Edit</a>
+                <a class="btn-delete" href="{% url 'employee_delete' employee.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a class="btn-add" href="{% url 'employee_add' %}">Add New Employee</a>
+
+{% endblock %}
